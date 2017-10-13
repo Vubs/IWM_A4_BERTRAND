@@ -41,6 +41,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{ Route("shopping-cart") }}">Cart <span class="badge">{{ Session::has('cart')? Session::get('cart')->totalQuantity : "" }}</span></a></li>
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>

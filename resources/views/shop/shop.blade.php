@@ -23,7 +23,8 @@
                     <img class="card-img-top img-responsive" src="http://via.placeholder.com/300.png/09f/fff" alt="Card image cap">
                     <div class="card-block">
                         <h4 class="card-title">{{ $product->name }}</h4>
-                        <p class="card-text">25€</p>
+                        <p class="card-text">{{ $product->price }}€</p>
+                        <a href="{{ route('product-add', $product->id) }}">Add</a>
                     </div>
                 </div>
             </div>

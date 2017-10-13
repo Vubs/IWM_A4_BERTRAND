@@ -15,22 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 /*
-    Todo : In this route / view the user must be able to see products by creation date
-    Todo: And choose the category he wants to see.
+    Add to cart Functionnality
+    Todo: Working on it.
 */
-Route::get('/shop', 'ShopController@index');
+Route::get('/shop/add-to-cart/{productId}', 'ShopController@getAddToCart')->name('product-add');
 
-/*
-    Todo : All products of the type (men and women ?)
-*/
+Route::get('/shop/shopping-cart', 'ShopController@getCart')->name('shopping-cart');
+
+Route::get('/shop', 'ShopController@index')->name('shop-all');
+
 Route::get('/shop/{products_type}', 'ShopController@showProductType')->name('product-type');
 
 /*
     Todo : Single product page with the option and the add cart functionnality.
 */
 Route::get('/shop/{products_type}/{product_name}', function() {});
+
+
 
 
 Route::group(['prefix' => 'admin'], function () {

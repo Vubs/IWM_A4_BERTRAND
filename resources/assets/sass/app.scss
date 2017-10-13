@@ -7,3 +7,16 @@
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+#product_types {
+    ul{
+        display: flex;
+        width: 30%;
+        list-style: none;
+    }
+
+    li{
+        flex-grow: 1;
+    }
+
+}

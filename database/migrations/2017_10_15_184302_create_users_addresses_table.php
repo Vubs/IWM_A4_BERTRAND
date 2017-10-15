@@ -17,8 +17,8 @@ class CreateUsersAddressesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('address-line-1');
-            $table->string('address-line-2')->nullable();
+            $table->string('address_line_1');
+            $table->string('address_line_2')->nullable();
             $table->string('city');
             $table->integer('zipcode');
             $table->string('state');

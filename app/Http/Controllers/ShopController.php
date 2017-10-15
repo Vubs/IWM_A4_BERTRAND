@@ -95,6 +95,15 @@ class ShopController extends Controller
                 return view('shop.shopping-cart');
             }
 
+            $user = Auth::user();
+
+            if(!is_null($user->address))
+            {
+                return redirect()->route('show-profile');
+            }
+
+            dd($user->address);
+
             dd($request->all());
 
             $oldCart = Session::get('cart');

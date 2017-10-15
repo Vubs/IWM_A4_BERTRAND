@@ -29,4 +29,9 @@ class User extends \TCG\Voyager\Models\User
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function address()
+    {
+        return $this->hasOne(UserAddress::class);
+    }
 }

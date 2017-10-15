@@ -1,3 +1,4 @@
+/*
 Stripe.setPublishableKey('pk_test_GM1LAa5BKK34xY41Irw2KqLc');
 
 var $form = $('checkout-form');
@@ -26,6 +27,6 @@ function stripeResponseHandler(status, response) {
 
         $form.append($('<input type="hidden" name="stripeToken" />').val(token));
 
-        /*$form.get(0).submit();*/
+        /!*$form.get(0).submit();*!/
     }
-}
+}*/

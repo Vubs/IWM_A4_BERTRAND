@@ -23,11 +23,18 @@ Route::get('/shop/add-to-cart/{productId}', 'ShopController@getAddToCart')->name
 
 Route::get('/shop/shopping-cart', 'ShopController@getCart')->name('shopping-cart');
 
-Route::get('/shop/checkout', 'ShopController@getCheckout')->name('checkout');
+
+Route::get('/shop/checkout', 'ShopController@getCheckout')->middleware('auth')->name('checkout');
+Route::post('/shop/checkout', 'ShopController@proceedCheckout')->name('proceed-checkout');
 
 Route::get('/shop', 'ShopController@index')->name('shop-all');
 
+// Stripe
+/*Route::post('/shop/proceed-checkout', 'ShopController@proceedCheckout')->name('proceed-checkout');*/
+
 Route::get('/shop/{products_type}', 'ShopController@showProductType')->name('product-type');
+
+
 
 /*
     Todo : Single product page with the option and the add cart functionnality.

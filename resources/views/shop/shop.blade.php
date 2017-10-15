@@ -21,7 +21,7 @@
             @foreach ($products as $product)
             <div class="col-md-4 text-center">
                 <div class="card">
-                    <a href="{{ route('single-product', [str_slug($productType->type_name), str_slug($product->name) ] ) }}">
+                    <a href="{{ route('single-product', [str_slug($productType->type_name), $product->id ] ) }}">
                         <img class="card-img-top img-responsive" src="http://via.placeholder.com/300.png/09f/fff" alt="Card image cap">
                     </a>
                     <div class="card-block">

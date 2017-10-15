@@ -3,7 +3,6 @@
 @section('content')
     @if(Session::has('cart'))
 
-        {{--{{ dd($products) }}--}}
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
@@ -20,8 +19,8 @@
                         @endforeach
                     </ul>
 
-                    <strong>Total : {{ $totalPrice }}</strong>
-                    <button type="button" class="btn btn-primary">Checkout</button>
+                    <strong>Total : {{ $totalPrice }} €</strong>
+                    <a href="{{ route('checkout') }}" type="button" class="btn btn-primary">Checkout</a>
 
                 </div>
             </div>

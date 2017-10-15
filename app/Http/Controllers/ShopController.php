@@ -6,7 +6,11 @@ use App\Models\Cart;
 use App\Models\Product;
 use App\Models\ProductType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Stripe\Charge;
+use Stripe\Stripe;
+use Stripe\StripeObjectTest;
 
 class ShopController extends Controller
 {
@@ -35,9 +39,9 @@ class ShopController extends Controller
         ]) ;
     }
 
-    public function showProduct($product_type, $product_name)
+    public function showProduct($product_type, $product_id)
     {
-        $product = Product::where('name', $product_name)->first();
+        $product = Product::find($product_id);
         $productType = ProductType::where('type_name', $product_type)->first();
 
         return view('shop.single-product', [
@@ -79,9 +83,48 @@ class ShopController extends Controller
         $cart = new Cart($oldCart);
         $total = $cart->totalPrice;
 
-        return view('shop.checkout', ['total' => $total]);
+        return view('shop.checkout', ['total' => $total, 'cart' => $cart]);
     }
 
+    public function proceedCheckout(Request $request)
+    {
 
+        // User authenticated
+        if (Auth::check()) {
+            if (!Session::has('cart')) {
+                return view('shop.shopping-cart');
+            }
+
+            dd($request->all());
+
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
+
+            try {
+                Charge::create(array(
+                    "amount" => $cart->totalPrice * 100,
+                    "currency" => "eur",
+                    "source" => $request->input('stripeToken'), // obtained with Stripe.js
+                    "description" => "Charge for joshua.thompson@example.com"
+                ));
+
+            } catch(\Exception $e) {
+                return redirect()->route('checkout')->with('error', $e->getMessage());
+            }
+
+            Session::forget('cart');
+            return redirect()->route('shop-all')->with('success', 'Successfully purshased');
+
+        }
+
+        // Stripe checks
+
+        // Stripe try checkout
+
+        // Save order & order details
+
+        // Save Order status
+
+    }
 
 }

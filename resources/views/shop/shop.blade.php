@@ -7,6 +7,7 @@
         <div class="row-fluid" style="background-color: #00acee; height: 20px">
             <nav id="product_types">
                 <ul>
+                    <li><a href="{{ route('shop-all') }}">Tous</a></li>
                 @foreach ($productTypes as $productType)
                     <li><a href="{{ route('product-type', str_slug($productType->type_name)) }}">{{ $productType->type_name }}</a></li>
                 @endforeach
@@ -20,7 +21,9 @@
             @foreach ($products as $product)
             <div class="col-md-4 text-center">
                 <div class="card">
-                    <img class="card-img-top img-responsive" src="http://via.placeholder.com/300.png/09f/fff" alt="Card image cap">
+                    <a href="{{ route('single-product', [str_slug($productType->type_name), str_slug($product->name) ] ) }}">
+                        <img class="card-img-top img-responsive" src="http://via.placeholder.com/300.png/09f/fff" alt="Card image cap">
+                    </a>
                     <div class="card-block">
                         <h4 class="card-title">{{ $product->name }}</h4>
                         <p class="card-text">{{ $product->price }}€</p>

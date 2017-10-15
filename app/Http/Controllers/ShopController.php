@@ -35,9 +35,15 @@ class ShopController extends Controller
         ]) ;
     }
 
-    public function showProduct()
+    public function showProduct($product_type, $product_name)
     {
+        $product = Product::where('name', $product_name)->first();
+        $productType = ProductType::where('type_name', $product_type)->first();
 
+        return view('shop.single-product', [
+            'product' => $product,
+            'productType' => $productType,
+        ]);
     }
 
     public function getAddToCart(Request $request, $id)

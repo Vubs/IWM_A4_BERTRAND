@@ -32,7 +32,7 @@ Route::get('/shop/{products_type}', 'ShopController@showProductType')->name('pro
 /*
     Todo : Single product page with the option and the add cart functionnality.
 */
-Route::get('/shop/{products_type}/{product_name}', function() {});
+Route::get('/shop/{products_type}/{product_name}', 'ShopController@showProduct')->name('single-product');
 
 
 

@@ -13,18 +13,14 @@
                                 <span class="badge">{{ $product['qty'] }}</span>
                                 <strong>{{ $product['item']['name'] }}</strong>
                                 <span class="label label-success">{{ $product['price'] }}€</span>
-
-                                <button type="button" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li>Reduce by 1</li>
-                                    <li>Reduce all</li>
-                                </ul>
+                                <span>Reduce by 1</span>
+                                <span>||</span>
+                                <span>Reduce all</span>
                             </li>
                         @endforeach
                     </ul>
 
                     <strong>Total : {{ $totalPrice }}</strong>
-
                     <button type="button" class="btn btn-primary">Checkout</button>
 
                 </div>

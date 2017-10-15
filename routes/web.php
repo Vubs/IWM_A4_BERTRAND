@@ -23,6 +23,8 @@ Route::get('/shop/add-to-cart/{productId}', 'ShopController@getAddToCart')->name
 
 Route::get('/shop/shopping-cart', 'ShopController@getCart')->name('shopping-cart');
 
+Route::get('/shop/checkout', 'ShopController@getCheckout')->name('checkout');
+
 Route::get('/shop', 'ShopController@index')->name('shop-all');
 
 Route::get('/shop/{products_type}', 'ShopController@showProductType')->name('product-type');

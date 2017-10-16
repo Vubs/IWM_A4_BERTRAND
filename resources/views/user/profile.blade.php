@@ -19,8 +19,9 @@
                             <p>Code postal : {{ $address->zipcode }}</p>
                             <p>Pays : {{ $address->state }}</p>
                             <p>Ville : {{ $address->city }}</p>
-
                         </div>
+                        <a class="btn btn-primary" href="{{ route('add-address') }}">Modifier l'addresse.</a>
+
                     @else
                         <a href="{{ route('add-address') }}" class="btn btn-primary">Ajouter une addresse</a>
                     @endif

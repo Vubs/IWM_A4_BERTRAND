@@ -31,6 +31,18 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
+        if($user->address) {
+            $address = $user->address;
+            $user_address = UserAddress::find($address->id);
+
+            $user_address->address_line_1 = $request->line_1;
+            $user_address->address_line_2 = $request->line_2;
+            $user_address->city = $request->city;
+            $user_address->state = $request->state;
+            $user_address->zipcode = $request->zipcode;
+            $user_address->save();
+        }
+
         $user_address = new UserAddress();
         $user_address->address_line_1 = $request->line_1;
         $user_address->address_line_2 = $request->line_2;
